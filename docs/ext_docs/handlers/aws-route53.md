@@ -10,7 +10,7 @@ Provider for handling Challenges that manages DNS entries hosted in an AWS Route
 | **SupportedTypes:** | DNS
 | **IsCleanUpSupported:** | True
 | **Assembly:** | `ACMESharp.Providers.AWS`
-| **Version:** | `0.8.5.0`
+| **Version:** | `0.9.0.0`
 
 ## Parameters
 ---

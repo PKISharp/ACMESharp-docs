@@ -8,9 +8,9 @@ A manual provider for handling Challenges. This provider supports the DNS and HT
 |-|-|
 | **Name:** | `manual`
 | **SupportedTypes:** | DNS, HTTP
-| **IsCleanUpSupported:** | False
+| **IsCleanUpSupported:** | True
 | **Assembly:** | `ACMESharp`
-| **Version:** | `0.8.5.0`
+| **Version:** | `0.9.0.0`
 
 ## Parameters
 ---
@@ -45,6 +45,18 @@ When true, output to a file will overwrite the file
 | | |
 |-|-|
 | **Name:**          | `Overwrite`
+| **Type:**          | BOOLEAN
+| **IsRequired:**    | False
+| **IsMultiValued:** | False
+
+---
+### Output JSON
+
+When true, output will be formatted as JSON suitable for machine automation
+
+| | |
+|-|-|
+| **Name:**          | `OutputJson`
 | **Type:**          | BOOLEAN
 | **IsRequired:**    | False
 | **IsMultiValued:** | False

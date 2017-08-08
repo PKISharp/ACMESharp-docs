@@ -9,7 +9,7 @@ Vault provider based on system-local folder and files.
 | **Name:** | `local`
 | **Aliases:** | 
 | **Assembly:** | `ACMESharp.Vault`
-| **Version:** | `0.8.5.0`
+| **Version:** | `0.9.0.0`
 
 ## Parameters
 ---
