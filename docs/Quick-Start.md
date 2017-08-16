@@ -324,7 +324,7 @@ Label              : Internet Information Server (IIS)
 SupportedTypes     : HTTP
 Description        : Provider for handling Challenges that manages the local IIS site configuration.
 IsCleanUpSupported : True
-Parameters         : {{ Name = WebSiteRef, Label = Web Site Ref... ((TRUNCATED-FOR-CLARITY)) }}
+Parameters         : \{\{ Name = WebSiteRef, Label = Web Site Ref... ((TRUNCATED-FOR-CLARITY))
 ```
 
 We see that two different Handlers are available to us.  Besides the `manual` Handler which is always available, we have the `iis` Handler.  We query for additional details about this Handler and see some metadata that describes the Handler, what Challenge Types it supports, and what parameters it supports.  We can get a cleaner view of the parameters, if we exclude everything else:
