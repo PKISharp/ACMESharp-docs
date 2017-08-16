@@ -32,7 +32,7 @@ Let's begin...
 
 # TL;DR
 
-Here we present the really quick Quick Start, only showing the steps needed to accomplish the scenario described above.
+Here we present the *really quick* Quick Start, only showing the steps needed to accomplish the scenario described above.
 Following that we step through each of the commands and explain them in more detail.
 
 ```PowerShell
@@ -69,6 +69,126 @@ iis
 ## Handle the challenge
 Admin PS> Complete-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01 -Handler iis -HandlerParams @{ WebSiteRef = 'MyExampleSite' }
 Admin PS> Submit-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01
+## You should see something like (note the "Status" is "Pending"):
+IdentifierType : dns
+Identifier     : www.example.com
+Uri            : https://acme-v01.api.letsencrypt.org/acme/authz/J-C2p4ZjSEcQSIbDI_kAeMBrHs_mJsP6x0uZaLVlZdA
+Status         : pending
+Expires        : 7/22/2017 6:15:39 PM
+Challenges     : {, , iis}
+Combinations   : {2, 1, 0}
+
+## You need to give Let's Encrypt some time to process the submission
+## and validate the challenge response -- usually it updates almost
+## immediately, but we'll wait a little bit just to be sure...
+Admin PS> sleep -s 60
+## Update the status of the Identifier
+Admin PS> Update-ACMEIdentifier -IdentifierRef pki1-acmetesting
+## You should see something like (note the "Status" is "Valid"):
+IdentifierPart : ACMESharp.Messages.IdentifierPart
+IdentifierType : dns
+Identifier     : www.example.com
+Uri            : https://acme-v01.api.letsencrypt.org/acme/authz/J-C2p4ZjSEcQSIbDI_kAeMBrHs_mJsP6x0uZaLVlZdA
+Status         : valid
+Expires        : 9/14/2017 6:46:08 PM
+Challenges     : {, , }
+Combinations   : {2, 1, 0}
+
+## We complete the same set of steps for the remaining DNS Identifiers
+##  * www.example.net
+##  * example.com
+Admin PS> New-ACMEIdentifier -Dns www.example.net -Alias www-example-net
+Admin PS> New-ACMEIdentifier -Dns example.com     -Alias root-example-com
+
+Admin PS> Complete-ACMEChallenge -IdentifierRef www-example-net -ChallengeType http-01 -Handler iis -HandlerParams @{ WebSiteRef = 'MyExampleSite' }
+Admin PS> Complete-ACMEChallenge -IdentifierRef root-example-com -ChallengeType http-01 -Handler iis -HandlerParams @{ WebSiteRef = 'MyExampleSite' }
+
+Admin PS> Submit-ACMEChallenge -IdentifierRef www-example-net -ChallengeType http-01
+Admin PS> Submit-ACMEChallenge -IdentifierRef root-example-com -ChallengeType http-01
+
+## Give it a minute, just in case
+Admin PS> sleep -s 60
+
+Admin PS> Update-ACMEIdentifier -IdentifierRef www-example-net
+Admin PS> Update-ACMEIdentifier -IdentifierRef root-example-com
+
+
+## Step 5:
+## Request and retrieve a certificate
+Admin PS> New-ACMECertificate -Generate -IdentifierRef www-example-com -AlternativeIdentifierRefs @('www-example-net','root-example-com') -Alias cert-example-domains
+## You should see something like this:
+Id                       : 8071b73c-2fed-45df-93b0-85936aacb761
+Alias                    : cert-example-domains
+Label                    :
+Memo                     :
+IdentifierRef            : fa52309d-4184-4a8b-ad53-1682c15c3f03
+IdentifierDns            : www.example.com
+AlternativeIdentifierDns : {www.example.org, example.com}
+KeyPemFile               :
+CsrPemFile               :
+GenerateDetailsFile      : 8071b73c-2fed-45df-93b0-85936aacb761-gen.json
+CertificateRequest       :
+CrtPemFile               :
+CrtDerFile               :
+IssuerSerialNumber       :
+SerialNumber             :
+Thumbprint               :
+Signature                :
+SignatureAlgorithm       :
+
+## Submit the certificate request to Let's Encrypt:
+Admin PS> Submit-ACMECertificate -CertificateRef cert-example-domains
+
+## You should see something like this (note the 'IssuerSerialNumber' is missing):
+Id                       : 60b69dd8-c806-40c7-af03-503597c13dcd
+Alias                    : cert-example-domains
+Label                    :
+Memo                     :
+IdentifierRef            : fa52309d-4184-4a8b-ad53-1682c15c3f03
+IdentifierDns            : www.example.com
+AlternativeIdentifierDns : {www.example.org, example.com}
+KeyPemFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-key.pem
+CsrPemFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-csr.pem
+GenerateDetailsFile      : 60b69dd8-c806-40c7-af03-503597c13dcd-gen.json
+CertificateRequest       : ACMESharp.CertificateRequest
+CrtPemFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-crt.pem
+CrtDerFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-crt.der
+IssuerSerialNumber       :
+SerialNumber             : 04671C4F6AF87F2DC3E4694C304EA8647CE1
+Thumbprint               : 442A4AE5CC098ACBD0FC94A18F2AC59750EB724B
+Signature                : 442A4AE5CC098ACBD0FC94A18F2AC59750EB724B
+SignatureAlgorithm       : sha256RSA
+
+## You need to do one update in order to retrieve the CA signer's public cert:
+Admin PS> Update-ACMECertificate -CertificateRef cert-example-domains
+
+## You should see something like this (note the 'IssuerSerialNumber' is populated):
+Id                       : 60b69dd8-c806-40c7-af03-503597c13dcd
+Alias                    : cert-pki1
+Label                    :
+Memo                     :
+IdentifierRef            : fa52309d-4184-4a8b-ad53-1682c15c3f03
+IdentifierDns            : pki1.acmetesting.ezstest.com
+AlternativeIdentifierDns : {pki1-alt.acmetesting.ezstest.com}
+KeyPemFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-key.pem
+CsrPemFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-csr.pem
+GenerateDetailsFile      : 60b69dd8-c806-40c7-af03-503597c13dcd-gen.json
+CertificateRequest       : ACMESharp.CertificateRequest
+CrtPemFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-crt.pem
+CrtDerFile               : 60b69dd8-c806-40c7-af03-503597c13dcd-crt.der
+IssuerSerialNumber       : 0A0141420000015385736A0B85ECA708
+SerialNumber             : 04671C4F6AF87F2DC3E4694C304EA8647CE1
+Thumbprint               : 442A4AE5CC098ACBD0FC94A18F2AC59750EB724B
+Signature                : 442A4AE5CC098ACBD0FC94A18F2AC59750EB724B
+SignatureAlgorithm       : sha256RSA
+
+## Step 6:
+## Install the certificate into your site
+Admin PS> Get-ACMEInstallerProfile -ListInstallers
+## You see this:
+iis
+
+
 ```
 
 
@@ -204,7 +324,7 @@ Label              : Internet Information Server (IIS)
 SupportedTypes     : HTTP
 Description        : Provider for handling Challenges that manages the local IIS site configuration.
 IsCleanUpSupported : True
-Parameters         : {{ Name = WebSiteRef, Label = Web Site Ref... ((TRUNCATED-FOR-CLARITY))
+Parameters         : {{ Name = WebSiteRef, Label = Web Site Ref... ((TRUNCATED-FOR-CLARITY)) }}
 ```
 
 We see that two different Handlers are available to us.  Besides the `manual` Handler which is always available, we have the `iis` Handler.  We query for additional details about this Handler and see some metadata that describes the Handler, what Challenge Types it supports, and what parameters it supports.  We can get a cleaner view of the parameters, if we exclude everything else:
