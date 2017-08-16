@@ -43,6 +43,7 @@ Let's begin...
 
 ## Step 1: Install ACMESharp
 Install the base ACMESharp module which includes all the cmdlets and the Extension Provider module for working with IIS:
+
 ```PowerShell
 Admin PS> Install-Module -Name ACMESharp -AllowClobber
 Admin PS> Install-Module -Name ACMESharp.Providers.IIS
@@ -53,25 +54,27 @@ Admin PS> Enable-ACMEExtensionModule -ModuleName ACMESharp.Providers.IIS
 
 ## Verify the module was enabled
 Admin PS> Get-ACMEExtensionModule | Select-Object -Expand Name
-
 ## You should see this:
 ACMESharp.Providers.IIS
 ```
 
 ## Step 2: Initialize Vault
 Initialize a local ACMESharp Vault to store our state and assets:
+
 ```PowerShell
 Admin PS> Initialize-ACMEVault
 ```
 
 ## Step 3: Register Account
 Register a new account with Let's Encrypt:
+
 ```PowerShell
 Admin PS> New-ACMERegistration -Contacts mailto:some-user@example.com -AcceptTos
 ```
 
 ## Step 4: Validate Identifiers
 We start by validating the first DNS domain name in our scenario: `www.example.com`
+
 ```PowerShell
 ## Make sure the IIS Challenge Handler is available
 Admin PS> Get-ACMEChallengeHandlerProfile -ListChallengeHandlers 
@@ -81,9 +84,11 @@ iis
 
 ## Create a new Identifier with Let's Encrypt
 Admin PS> New-ACMEIdentifier -Dns www.example.com -Alias www-example-com
+
 ## Handle the challenge using HTTP validation on IIS
 Admin PS> Complete-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01 -Handler iis -HandlerParams @{ WebSiteRef = 'MyExampleSite' }
-## Let Let's Encrypt know it's OK to validate now
+
+## Tell Let's Encrypt it's OK to validate now
 Admin PS> Submit-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01
 ## You should see something like this (note the "Status" is "Pending"):
 IdentifierType : dns
@@ -93,12 +98,14 @@ Status         : pending
 Expires        : 7/22/2017 6:15:39 PM
 Challenges     : {, , iis}
 Combinations   : {2, 1, 0}
+```
 
-## You need to give Let's Encrypt some time to process the submission
-## and validate the challenge response -- usually it updates almost
-## immediately, but we'll wait a little bit just to be sure.
-##
-## This suspends your PS session, or you can just go grab some coffee...
+You need to give Let's Encrypt some time to process the submission and validate the challenge
+response -- usually it updates almost immediately, but we'll wait a little bit just to be sure.
+
+```PowerShell
+## This suspends your PS session for a minute, or you
+## can skip this command and just go grab some tea...
 Admin PS> sleep -s 60
 
 ## Update the status of the Identifier
@@ -117,6 +124,7 @@ Combinations   : {2, 1, 0}
 We complete the same set of steps for the remaining DNS Identifiers
  * `www.example.net`
  * `example.com`
+
 ```PowerShell
 Admin PS> New-ACMEIdentifier -Dns www.example.net -Alias www-example-net
 Admin PS> New-ACMEIdentifier -Dns example.com     -Alias root-example-com
@@ -136,6 +144,7 @@ Admin PS> Update-ACMEIdentifier -IdentifierRef root-example-com
 
 ## Step 5: Generate Certificate
 Request and retrieve a certificate:
+
 ```PowerShell
 Admin PS> New-ACMECertificate -Generate -IdentifierRef www-example-com -AlternativeIdentifierRefs @('www-example-net','root-example-com') -Alias cert-example-domains
 ## You should see something like this:
@@ -158,9 +167,9 @@ Thumbprint               :
 Signature                :
 SignatureAlgorithm       :
 
+
 ## Submit the certificate request to Let's Encrypt:
 Admin PS> Submit-ACMECertificate -CertificateRef cert-example-domains
-
 ## You should see something like this (note the 'IssuerSerialNumber' is missing):
 Id                       : 60b69dd8-c806-40c7-af03-503597c13dcd
 Alias                    : cert-example-domains
@@ -181,9 +190,9 @@ Thumbprint               : 442A4AE5CC098ACBD0FC94A18F2AC59750EB724B
 Signature                : 442A4AE5CC098ACBD0FC94A18F2AC59750EB724B
 SignatureAlgorithm       : sha256RSA
 
+
 ## You need to do one update in order to retrieve the CA signer's public cert:
 Admin PS> Update-ACMECertificate -CertificateRef cert-example-domains
-
 ## You should see something like this (note the 'IssuerSerialNumber' is populated):
 Id                       : 60b69dd8-c806-40c7-af03-503597c13dcd
 Alias                    : cert-pki1
@@ -206,7 +215,8 @@ SignatureAlgorithm       : sha256RSA
 ```
 
 ## Step 6: Install Certificate
-Install the certificate into your site
+Install the certificate into your site:
+
 ```PowerShell
 ## Make sure the IIS Installer is available
 Admin PS> Get-ACMEInstallerProfile -ListInstallers
@@ -214,9 +224,17 @@ Admin PS> Get-ACMEInstallerProfile -ListInstallers
 iis
 
 ## Install the cert on the default HTTPS binding
-Admin PS> Install-ACMECertificate -CertificateRef cert-pki1 -Installer iis -InstallerParameters @{ WebSiteRef = 'MyExampleSite' }
+Admin PS> Install-ACMECertificate -CertificateRef cert-pki1 -Installer iis -InstallerParameters @{
+  WebSiteRef = 'MyExampleSite'
+}
+
 ## Install the cert on the alternate HTTPS binding, but only for one DNS name
-Admin PS> Install-ACMECertificate -CertificateRef cert-pki1 -Installer iis -InstallerParameters @{ WebSiteRef = 'MyExampleSite'; BindingHost = 'www.example.net'; BindingPort = 8443; CertificateFriendlyName = 'LetsEncryptCert' }
+Admin PS> Install-ACMECertificate -CertificateRef cert-pki1 -Installer iis -InstallerParameters @{
+  WebSiteRef = 'MyExampleSite'
+  BindingHost = 'www.example.net'
+  BindingPort = 8443
+  CertificateFriendlyName = 'LetsEncryptCert'
+}
 ```
 
 And that's all folks.
