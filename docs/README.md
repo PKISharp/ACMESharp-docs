@@ -5,17 +5,18 @@
 > NOTE: This is pre-release documentation and still a work-in-progress (WIP).
 
 * User Documentation:
-  * [Quick Start](Quick-Start)
-  * [User Guide](User-Guide)
-  * [Downloads: PowerShell Modules](Downloads-PowerShell-Modules)
+  * [Quick Start](Quick-Start.md)
+  * [User Guide](User-Guide.md)
+  * [Downloads: PowerShell Modules](Downloads-PowerShell-Modules.md)
 
 * Reference:
-  * [ACMESharp Details](ACMESharp-Details)
-  * [Installation Details](Installation-ACMESharp-PowerShell-client)
-  * [Vault Details](Vault-Details)
-  * [Account Registration Details](Account-Registration-Details)
-  * [Resources, References and Aliases](Resources,-References-and-Aliases)
+  * [ACMESharp Details](ACMESharp-Details.md)
+  * [Installation Details](Installation-ACMESharp-PowerShell-client.md)
+  * [Vault Details](Vault-Details.md)
+  * [Account Registration Details](Account-Registration-Details.md)
+  * [Resources, References and Aliases](Resources,-References-and-Aliases.md)
   * [ACMESharp Provider Extensions](ext_docs/)
+  * [Why do we need `-AllowClobber`](Why-AllowClobber.md)
 
 * For Develoeprs:
-  * [Downloads: NuGet Packages](Downloads-NuGet-Packages)
+  * [Downloads: NuGet Packages](Downloads-NuGet-Packages.md)

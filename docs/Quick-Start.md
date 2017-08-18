@@ -6,7 +6,7 @@ This document runs through the basic steps to get up and running quickly with th
 
 ## TL;DR
 
-This *Quick Start* guide will only present the simplest form of each step needed to accomplish the scenario described below.  By design, there is very little detail or explanation of what is being done.  If you would like more detail and explanation for each step, please check out the detailed [User Guide](User-Guide) which runs through the same scenario as this Quick Start document, but explains each step in more detail and provides links for even more information.
+This *Quick Start* guide will only present the simplest form of each step needed to accomplish the scenario described below.  By design, there is very little detail or explanation of what is being done.  If you would like more detail and explanation for each step, please check out the detailed [User Guide](User-Guide.md) which runs through the same scenario as this Quick Start document, but explains each step in more detail and provides links for even more information.
 
 ## Overview
 
@@ -241,4 +241,4 @@ And that's all folks.
 
 ---
 
-For a more detailed look at the steps above, please check out the [User Guide](User-Guide).
+For a more detailed look at the steps above, please check out the [User Guide](User-Guide.md).

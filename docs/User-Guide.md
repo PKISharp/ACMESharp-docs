@@ -6,9 +6,9 @@ This document presents a detailed look at each step needed to use the **ACMEShar
 
 # The Long Version
 
-This User Guide is a companion to the [Quick Start guide](Quick-Start) and covers all the same steps and the same sample scenario, but with more details and explanation.
+This User Guide is a companion to the [Quick Start guide](Quick-Start.md) and covers all the same steps and the same sample scenario, but with more details and explanation.
 
-To following along with this guide, you should first review and familiarize yourslef with the [outline of steps](Quick-Start#overview) and the description of the [Sample Scenario](Quick-Start#sample-scenario) from the Quick Start guide.  To reduce duplication, they won't be repeated here.
+To following along with this guide, you should first review and familiarize yourslef with the [outline of steps](Quick-Start.md#overview) and the description of the [Sample Scenario](Quick-Start.md#sample-scenario) from the Quick Start guide.  To reduce duplication, they won't be repeated here.
 
 Let's begin...
 
@@ -28,7 +28,7 @@ Admin PS> Install-Module -Name ACMESharp -AllowClobber
 ## Add support for working with IIS
 Admin PS> Install-Module -Name ACMESharp.Providers.IIS
 ```
-> Why do we need to specify the `-AllowClobber` flag?  The explanation is [here](why-allowclobber) >TODO<
+> Why do we need to specify the `-AllowClobber` flag?  The explanation is [here](Why-AllowClobber.md) >TODO<
 
 Next, you need to enable the Provider Extension module:
 ```powershell
@@ -56,7 +56,7 @@ Admin PS> Import-Module ACMESharp
 Admin PS> Initialize-ACMESharp
 ```
 
-> This will use the *default Vault profile* for Administrators, which defines the path to the Vault storage directory as `C:\ProgramData\ACMESharp\sysVault`.  For more details about Vault profiles and configuration alternatives, please see the [Vault Details](https://github.com/ebekker/ACMESharp/wiki/%5BWIP%5D-Vault-Details) >TODO< documentation.
+> This will use the *default Vault profile* for Administrators, which defines the path to the Vault storage directory as `C:\ProgramData\ACMESharp\sysVault`.  For more details about Vault profiles and configuration alternatives, please see the [Vault Details](Vault-Details.md) >TODO< documentation.
 
 Up to this point, everything we have done has been confined to the local machine.  In the next step, we begin interacting with the ACME server and formally begin the ACME workflow.
 
@@ -74,7 +74,7 @@ To register a new Account, execute:
 Admin PS> New-ACMERegistration -Contacts mailto:some-user@example.com -AcceptTos
 ```
 
-> This will register a new Account and agree to the ToS in one step.  If you want more details about the registration process and and how to update Account attributes, see the [Account Registration details](https://github.com/ebekker/ACMESharp/wiki/%5BWIP%5D-Account-Registration-Details) >TODO< documentation.
+> This will register a new Account and agree to the ToS in one step.  If you want more details about the registration process and and how to update Account attributes, see the [Account Registration details](Account-Registration-Details.md) >TODO< documentation.
 
 ## Step 4: Validate Identifiers
 
@@ -102,7 +102,7 @@ In the example above, we defined the Alias `www-example-com` to represent the Id
 
 In the example above, we could have just as easily used the DNS name itself as the Alias (`www.example.com`) but we wanted to demonstrate that the Resource and the Alias are independent of each other.  Additionally, we do not have to assign an Alias to the Identifier resource (or any resource for that matter), this is strictly an optional step.  However, in the absence of an Alias, a Resource would later have to be referenced either by its formal unique ID (GUID) or by a relative sequence number (SeqNum).  Both of these alternatives are discouraged as they are more cumbersome to work with and neither of them reflects any intrinsic association to the Resource they represent.
 
-> For more information about Aliases, please see the [Resources](https://github.com/ebekker/ACMESharp/wiki/%5BWIP%5D-Resources,-References-and-Aliases) overview documentation >TODO<.
+> For more information about Aliases, please see the [Resources](Resources,-References-and-Aliases.md) overview documentation >TODO<.
 
 ### Handling an Identifier Challenge
 
