@@ -14,10 +14,20 @@ The ACMESharp PowerShell modules make up the *client* that can be used by end-us
 
 | | Hosted on the [PowerShell Gallery](https://www.powershellgallery.com/items?q=Tags%3A%22acmesharp%22) |
 |-|-|
-| [![Powershellgallery Badge][psgallery-badge]][psgallery-status] | ACMESharp - complete 0.8.1 distribution
+| [![Powershellgallery Badge][psgallery-badge]][psgallery-base-status] | ACMESharp - version 0.9.0 base module
+| Provider Modules:
+| [![Powershellgallery Badge][psgallery-badge]][psgallery-aws-status] | AWS
+| [![Powershellgallery Badge][psgallery-badge]][psgallery-cfl-status] | CloudFlare
+| [![Powershellgallery Badge][psgallery-badge]][psgallery-iis-status] | Microsoft IIS
+| [![Powershellgallery Badge][psgallery-badge]][psgallery-win-status] | Microsoft Windows
+
 
 [psgallery-badge]: https://img.shields.io/badge/PowerShell_Gallery-LATEST-green.svg
-[psgallery-status]: https://www.powershellgallery.com/packages/ACMESharp
+[psgallery-base-status]: https://www.powershellgallery.com/packages/ACMESharp
+[psgallery-aws-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.AWS
+[psgallery-cfl-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.CloudFlare
+[psgallery-iis-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.IIS
+[psgallery-win-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.Windows
 
 #### Pre-Release Modules
 
