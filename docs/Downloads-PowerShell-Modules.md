@@ -14,7 +14,7 @@ The ACMESharp PowerShell modules make up the *client* that can be used by end-us
 
 | | Hosted on the [PowerShell Gallery](https://www.powershellgallery.com/items?q=Tags%3A%22acmesharp%22) |
 |-|-|
-| [![Powershellgallery Badge][psgallery-badge]][psgallery-base-status] | ACMESharp - version 0.9.0 base module |
+| [![Powershellgallery Badge][psgallery-badge]][psgallery-base-status] | ACMESharp base module - version 0.9.x |
 | Provider Modules: | |
 | [![Powershellgallery Badge][psgallery-badge]][psgallery-aws-status]  | AWS               |
 | [![Powershellgallery Badge][psgallery-badge]][psgallery-cfl-status]  | CloudFlare        |
