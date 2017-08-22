@@ -17,6 +17,7 @@
   * [Resources, References and Aliases](Resources,-References-and-Aliases.md)
   * [ACMESharp Provider Extensions](ext_docs/)
   * [Why do we need `-AllowClobber`](Why-AllowClobber.md)
+  * [Local Vault and Windows EFS](Local-Vault-EFS.md)
 
 * For Develoeprs:
   * [Downloads: NuGet Packages](Downloads-NuGet-Packages.md)
