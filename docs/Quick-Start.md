@@ -14,12 +14,12 @@ These are the steps that we will run through in the scenario described below:
 
 Step | Name | Description
 -----|------|------------
-  1. | **Install ACMESharp**    | installing the ACMESharp PowerShell client
-  2. | **Initialize Vault**     | initializing a local Vault to store generated assets
-  3. | **Register Account**     | register a new ACME account
-  4. | **Validate Identifiers** | prove you control one or more DNS domains
-  5. | **Generate Certificate** | request and retrieve a PKI certificate
-  6. | **Install Certificate**  | install the PKI certificate to a server or service
+|  1. | **Install ACMESharp**    | installing the ACMESharp PowerShell client
+|  2. | **Initialize Vault**     | initializing a local Vault to store generated assets
+|  3. | **Register Account**     | register a new ACME account
+|  4. | **Validate Identifiers** | prove you control one or more DNS domains
+|  5. | **Generate Certificate** | request and retrieve a PKI certificate
+|  6. | **Install Certificate**  | install the PKI certificate to a server or service
 
 ## Sample Scenario
 
