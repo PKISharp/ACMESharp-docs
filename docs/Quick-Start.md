@@ -86,7 +86,7 @@ iis
 Admin PS> New-ACMEIdentifier -Dns www.example.com -Alias www-example-com
 
 ## Handle the challenge using HTTP validation on IIS
-Admin PS> Complete-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01 -Handler iis -HandlerParams @{ WebSiteRef = 'MyExampleSite' }
+Admin PS> Complete-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01 -Handler iis -HandlerParameters @{ WebSiteRef = 'MyExampleSite' }
 
 ## Tell Let's Encrypt it's OK to validate now
 Admin PS> Submit-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01
@@ -109,7 +109,7 @@ response -- usually it updates almost immediately, but we'll wait a little bit j
 Admin PS> sleep -s 60
 
 ## Update the status of the Identifier
-Admin PS> Update-ACMEIdentifier -IdentifierRef pki1-acmetesting
+Admin PS> Update-ACMEIdentifier -IdentifierRef www-example-com
 ## You should see something like this (note the "Status" is "Valid"):
 IdentifierPart : ACMESharp.Messages.IdentifierPart
 IdentifierType : dns
