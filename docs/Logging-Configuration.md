@@ -29,7 +29,7 @@ For example:
 ```json
 {
   "serilog:using:RollingFile": "Serilog.Sinks.RollingFile",
-  "serilog:write-to:RollingFile.pathFormat": "%TEMP%\Logs\myapp-{Date}.txt",
+  "serilog:write-to:RollingFile.pathFormat": "%TEMP%\\Logs\\myapp-{Date}.txt",
   "serilog:write-to:RollingFile.retainedFileCountLimit": "10"
 }
 ```
