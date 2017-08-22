@@ -28,6 +28,22 @@ In environments where EFS is not supported, any attempt to store files with
 the EFS flag enabled will fail with a `System.UnauthorizedAccessException`
 error and a message to the effect of `...Access to the path '...' is denied`.
 
+There are **other scenarios** where an attempt to use EFS may fail, even if
+you are using a supported OS and file system, such as if a Windows Domain
+has been configured to disable EFS through the use of GPO.  We won't list
+out all the possibilities here.  However you can test out the use of EFS
+on your system by running this little piece of PowerShell code and seeing
+if it succeeds:
+
+```powershell
+$efsTestFile = "$($env:ProgramData)\testing-efs.txt"
+## If EFS isn't supported, it will fail here
+$x = [System.IO.File]::Create($efsTestFile, 100, "Encrypted")
+$x.WriteByte(65)
+$x.Close()
+del $efsTestFile
+```
+
 ## What can we do about it?
 This error is meant to warn you that you will storing this sensitive
 information in the clear.  If you wish to forgoe this warning, then
