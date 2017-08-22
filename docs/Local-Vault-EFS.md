@@ -37,7 +37,7 @@ if it succeeds:
 
 ```powershell
 $efsTestFile = "$($env:ProgramData)\testing-efs.txt"
-## If EFS isn't supported, it will fail here
+## If EFS isn't supported, it will fail with this call to Create
 $x = [System.IO.File]::Create($efsTestFile, 100, "Encrypted")
 $x.WriteByte(65)
 $x.Close()
