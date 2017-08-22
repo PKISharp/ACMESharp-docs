@@ -12,7 +12,7 @@ To following along with this guide, you should first review and familiarize your
 
 Let's begin...
 
-> PLEASE NOTE: If at any time for the following sequence of steps you encounter an `UnauthorizedAccessException` exception or an error along the lines of `Access to path denied`, please see [this article](Local-Vault-EFS.md) for possible solution.
+> **PLEASE NOTE:** If at any time for the following sequence of steps you encounter an **`UnauthorizedAccessException`** exception or an error along the lines of **`Access to path denied`**, please see [this article](Local-Vault-EFS.md) for possible solution.
 
 ## Step 1: Install ACMESharp
 
