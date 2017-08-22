@@ -41,7 +41,7 @@ The scenario that we will follow in this Quick Start guide will be as follows:
 
 Let's begin...
 
-> PLEASE NOTE: If at any time for the following sequence of steps you encounter an `UnauthorizedAccessException` exception or a `Access to path denied` error, please see [this article](Local-Vault-EFS.md) for possible solution.
+> **PLEASE NOTE:** If at any time for the following sequence of steps you encounter an **`UnauthorizedAccessException`** exception or an error along the lines of **`Access to path denied`**, please see [this article](Local-Vault-EFS.md) for possible solution.
 
 ## Step 1: Install ACMESharp
 Install the base ACMESharp module which includes all the cmdlets and the Extension Provider module for working with IIS:
