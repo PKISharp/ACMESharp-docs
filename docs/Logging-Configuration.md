@@ -22,15 +22,15 @@ its settings by creating and JSON file in one of these two locations (searched i
 
 The file should contain a JSON object mapping with keys and values defined in similar
 fashion to the [AppSettings](https://github.com/serilog/serilog/wiki/AppSettings#configuring-the-logger)
-configuration.
+configuration but **without** the need for a *prefix*.
 
 For example:
 
 ```json
 {
-  "serilog:using:RollingFile": "Serilog.Sinks.RollingFile",
-  "serilog:write-to:RollingFile.pathFormat": "%TEMP%\\Logs\\myapp-{Date}.txt",
-  "serilog:write-to:RollingFile.retainedFileCountLimit": "10"
+  "using:RollingFile": "Serilog.Sinks.RollingFile",
+  "write-to:RollingFile.pathFormat": "%TEMP%\\Logs\\myapp-{Date}.txt",
+  "write-to:RollingFile.retainedFileCountLimit": "10"
 }
 ```
 
