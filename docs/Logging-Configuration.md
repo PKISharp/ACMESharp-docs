@@ -15,7 +15,7 @@ Logging information is meant to be human-digestable information only, and should
 for debugging and troubleshooting or just confirming correct behavior.
 
 If you wish to taylor the the logging framework configuration, you have the option of overriding
-its settings by creating and JSON file in one of these two locations (searched in this order):
+its settings by creating an XML file in one of these two locations (searched in this order):
 
 * `%LOCALAPPDATA%\ACMESharp\nlog.config`
 * `%PROGRAMDATA%\ACMESharp\nlog.config`
