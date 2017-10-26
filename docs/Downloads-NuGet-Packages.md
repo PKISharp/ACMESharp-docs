@@ -30,4 +30,5 @@
 | [![MyGet](https://img.shields.io/myget/acmesharp/v/ACMESharp.Providers.CloudFlare.svg)](https://www.myget.org/feed/acmesharp/package/nuget/ACMESharp.Providers.CloudFlare) | CloudFlare (DNS)
 | [![MyGet](https://img.shields.io/myget/acmesharp/v/ACMESharp.Providers.IIS.svg)](https://www.myget.org/feed/acmesharp/package/nuget/ACMESharp.Providers.IIS) | IIS (handler/installer)
 | [![MyGet](https://img.shields.io/myget/acmesharp/v/ACMESharp.Providers.Windows.svg)](https://www.myget.org/feed/acmesharp/package/nuget/ACMESharp.Providers.Windows) | Windows (installer for Cert Store)
+| [![MyGet](https://img.shields.io/myget/acmesharp/v/ACMESharp.Providers.DNSMadeEasy.svg)](https://www.myget.org/feed/acmesharp/package/nuget/ACMESharp.Providers.DNSMadeEasy) | DNS Made Easy (DNS)
 
