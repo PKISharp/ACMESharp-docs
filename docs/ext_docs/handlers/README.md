@@ -19,8 +19,9 @@ this may entail removing any residual artifacts or reverting state that
 it may have produced in order to complete the Challenge.
 
 * [`manual`](manual.md)
+* [`dnsme`](dnsme.md)
 * [`aws-route53`](aws-route53.md)
 * [`aws-s3`](aws-s3.md)
+* [`msdns`](msdns.md)
 * [`CloudFlare`](CloudFlare.md)
 * [`iis`](iis.md)
-* [`msdns`](msdns.md)

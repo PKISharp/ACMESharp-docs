@@ -10,6 +10,6 @@ A microsoft dns provider for handling Challenges. This provider supports the DNS
 | **SupportedTypes:** | DNS
 | **IsCleanUpSupported:** | False
 | **Assembly:** | `ACMESharp.Providers.Windows`
-| **Version:** | `0.9.0.0`
+| **Version:** | `0.9.1.0`
 
 ## Parameters

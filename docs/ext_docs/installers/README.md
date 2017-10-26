@@ -16,5 +16,5 @@ the story* of automated certificate management and exchange.
 
 * [`aws-iam`](aws-iam.md)
 * [`aws-elb`](aws-elb.md)
-* [`iis`](iis.md)
 * [`win-cert`](win-cert.md)
+* [`iis`](iis.md)

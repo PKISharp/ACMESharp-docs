@@ -9,7 +9,7 @@ Installer supprts importing certificate to the user or system Windows Certificat
 | **Name:** | `win-cert`
 | **IsUninstallSupported:** | False
 | **Assembly:** | `ACMESharp.Providers.Windows`
-| **Version:** | `0.9.0.0`
+| **Version:** | `0.9.1.0`
 
 ## Parameters
 ---
