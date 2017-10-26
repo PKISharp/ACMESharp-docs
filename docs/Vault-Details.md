@@ -1,3 +1,9 @@
+---
+title:  Vault Details
+---
+
+# Details:  Vault
+
 > NOTE: This documentation applies to ACMESharp **version 0.9.0** and later
 
 TODO: Describe:

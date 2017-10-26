@@ -14,12 +14,12 @@ These are the steps that we will run through in the scenario described below:
 
 Step | Name | Description
 -----|------|------------
-  1. | **Install ACMESharp**    | installing the ACMESharp PowerShell client
-  2. | **Initialize Vault**     | initializing a local Vault to store generated assets
-  3. | **Register Account**     | register a new ACME account
-  4. | **Validate Identifiers** | prove you control one or more DNS domains
-  5. | **Generate Certificate** | request and retrieve a PKI certificate
-  6. | **Install Certificate**  | install the PKI certificate to a server or service
+|  1. | **Install ACMESharp**    | installing the ACMESharp PowerShell client
+|  2. | **Initialize Vault**     | initializing a local Vault to store generated assets
+|  3. | **Register Account**     | register a new ACME account
+|  4. | **Validate Identifiers** | prove you control one or more DNS domains
+|  5. | **Generate Certificate** | request and retrieve a PKI certificate
+|  6. | **Install Certificate**  | install the PKI certificate to a server or service
 
 ## Sample Scenario
 
@@ -40,6 +40,8 @@ The scenario that we will follow in this Quick Start guide will be as follows:
 * You want to install the free certificate into your IIS site and enable HTTPS traffic over the standard port (443) *and* the alternate port 8443, but only for requests targeting `www.example.net` (this last binding is only supported on newer versions of IIS that support SNI).
 
 Let's begin...
+
+> **PLEASE NOTE:** If at any time for the following sequence of steps you encounter an **`UnauthorizedAccessException`** exception or an error along the lines of **`Access to path denied`**, please see [this article](Local-Vault-EFS.md) for possible solution.
 
 ## Step 1: Install ACMESharp
 Install the base ACMESharp module which includes all the cmdlets and the Extension Provider module for working with IIS:
@@ -86,7 +88,7 @@ iis
 Admin PS> New-ACMEIdentifier -Dns www.example.com -Alias www-example-com
 
 ## Handle the challenge using HTTP validation on IIS
-Admin PS> Complete-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01 -Handler iis -HandlerParams @{ WebSiteRef = 'MyExampleSite' }
+Admin PS> Complete-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01 -Handler iis -HandlerParameters @{ WebSiteRef = 'MyExampleSite' }
 
 ## Tell Let's Encrypt it's OK to validate now
 Admin PS> Submit-ACMEChallenge -IdentifierRef www-example-com -ChallengeType http-01
@@ -109,7 +111,7 @@ response -- usually it updates almost immediately, but we'll wait a little bit j
 Admin PS> sleep -s 60
 
 ## Update the status of the Identifier
-Admin PS> Update-ACMEIdentifier -IdentifierRef pki1-acmetesting
+Admin PS> Update-ACMEIdentifier -IdentifierRef www-example-com
 ## You should see something like this (note the "Status" is "Valid"):
 IdentifierPart : ACMESharp.Messages.IdentifierPart
 IdentifierType : dns

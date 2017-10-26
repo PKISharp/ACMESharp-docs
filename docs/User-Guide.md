@@ -12,6 +12,8 @@ To following along with this guide, you should first review and familiarize your
 
 Let's begin...
 
+> **PLEASE NOTE:** If at any time for the following sequence of steps you encounter an **`UnauthorizedAccessException`** exception or an error along the lines of **`Access to path denied`**, please see [this article](Local-Vault-EFS.md) for possible solution.
+
 ## Step 1: Install ACMESharp
 
 The ACMESharp PowerShell client is published to the [PowerShell Gallery](https://www.powershellgallery.com/items?q=Tags%3A%22acmesharp%22) as a set of *PowerShell Modules*.  This is the official way that the client is distributed, and it's also the easiest way to install it.
