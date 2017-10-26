@@ -20,6 +20,7 @@ The ACMESharp PowerShell modules make up the *client* that can be used by end-us
 | [![Powershellgallery Badge][psgallery-badge]][psgallery-cfl-status]  | CloudFlare        |
 | [![Powershellgallery Badge][psgallery-badge]][psgallery-iis-status]  | Microsoft IIS     |
 | [![Powershellgallery Badge][psgallery-badge]][psgallery-win-status]  | Microsoft Windows |
+| [![Powershellgallery Badge][psgallery-badge]][psgallery-dme-status]  | DNS Made Easy     |
 
 
 [psgallery-badge]: https://img.shields.io/badge/PowerShell_Gallery-LATEST-green.svg
@@ -28,6 +29,7 @@ The ACMESharp PowerShell modules make up the *client* that can be used by end-us
 [psgallery-cfl-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.CloudFlare
 [psgallery-iis-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.IIS
 [psgallery-win-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.Windows
+[psgallery-dme-status]: https://www.powershellgallery.com/packages/ACMESharp.Providers.DNSMadeEasy
 
 #### Pre-Release Modules
 
@@ -51,5 +53,6 @@ Admin PS> Install-Module -Name ACMESharp.Providers.IIS -Repository acmesharp-pre
 | [![MyGet](https://img.shields.io/myget/acmesharp-posh-staging/v/ACMESharp.Providers.CloudFlare.svg)](https://www.myget.org/feed/acmesharp-posh-staging/package/nuget/ACMESharp.Providers.CloudFlare) | CloudFlare |
 | [![MyGet](https://img.shields.io/myget/acmesharp-posh-staging/v/ACMESharp.Providers.IIS.svg)](https://www.myget.org/feed/acmesharp-posh-staging/package/nuget/ACMESharp.Providers.IIS) | Microsoft IIS |
 | [![MyGet](https://img.shields.io/myget/acmesharp-posh-staging/v/ACMESharp.Providers.Windows.svg)](https://www.myget.org/feed/acmesharp-posh-staging/package/nuget/ACMESharp.Providers.Windows) | Microsoft Windows |
+| [![MyGet](https://img.shields.io/myget/acmesharp-posh-staging/v/ACMESharp.Providers.DNSMadeEasy.svg)](https://www.myget.org/feed/acmesharp-posh-staging/package/nuget/ACMESharp.Providers.DNSMadeEasy) | DNS Made Easy |
 
 Please see the [reference documentation](http://pkisharp.github.io/ACMESharp-docs/ext_docs) for the standard Provider Extensions.
