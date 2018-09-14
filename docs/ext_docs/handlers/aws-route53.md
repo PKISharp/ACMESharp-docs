@@ -45,7 +45,7 @@ Specifies the time-to-live (TTL) in seconds of the RR (defaults to 300)
 | | |
 |-|-|
 | **Name:**          | `ResourceRecordTtl`
-| **Type:**          | TEXT
+| **Type:**          | INT
 | **IsRequired:**    | False
 | **IsMultiValued:** | False
 
