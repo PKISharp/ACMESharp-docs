@@ -55,7 +55,7 @@ A Vault instance is tied to a specific *ACME server endpoint*.  That is, when yo
 ## assume that we're operating in a single PS session -- if you
 ## switch sessions in between steps, be sure to import the module
 Admin PS> Import-Module ACMESharp
-Admin PS> Initialize-ACMESharp
+Admin PS> Initialize-ACMEVault
 ```
 
 > This will use the *default Vault profile* for Administrators, which defines the path to the Vault storage directory as `C:\ProgramData\ACMESharp\sysVault`.  For more details about Vault profiles and configuration alternatives, please see the [Vault Details](Vault-Details.md) >TODO< documentation.
